@@ -3,41 +3,64 @@
 
 #include<map>
 #include<string>
+#include<vector>
 
 using namespace std;
 
-map<string, string> passwords {
-    {"Tinsmorem","Iltil"},
-    {"Ulyglet","Snurgrurg"},
-    {"Lafibnom","Diamdioc"},
-    {"Thenbovir","Oudrarrouz"},
-    {"Gallnip","Haulmi"},
-    {"Froolvess","Holdiz"},
-    {"Smameknuc","Hinnyual"},
-    {"Smedekmet","Traolbubrorg"},
-    {"Cebbnec","Khishohi"},
-    {"Klolyddwac","Maennius"},
-    {"Blivylnas","Jolmuulmohr"},
-    {"Glyhamdas","Drustiel"},
-    {"Hillnar","Nanruddiarth"},
-    {"Phieddlu","Zussial"},
-    {"Fnamdyn","Laszo"},
-    {"Fladnivith","Nathentoih"},
-    {"Phelnyll","Phorughoelle"},
-    {"Snallbam","Skilzeda"},
-    {"Fensmyl","Vrakniarth"},
-    {"Pibkecim","Jerpuldo"}
+map<string, int> userids {
+    {"Tinsmorem",0},
+    {"Ulyglet",1},
+    {"Lafibnom",2},
+    {"Thenbovir",3},
+    {"Gallnip",4},
+    {"Froolvess",5},
+    {"Smameknuc",6},
+    {"Smedekmet",7},
+    {"Cebbnec",8},
+    {"Klolyddwac",9},
+    {"Blivylnas",10},
+    {"Glyhamdas",11},
+    {"Hillnar",12},
+    {"Phieddlu",13},
+    {"Fnamdyn",14},
+    {"Fladnivith",15},
+    {"Phelnyll",16},
+    {"Snallbam",17},
+    {"Fensmyl",18},
+    {"Pibkecim",19},
 };
 
-//Return true only if the person is present in the database
-bool find_user(string name){
-    if(passwords.find(name) != passwords.end()) return true;
-    else return false;
+vector<string> passwords {
+"Iltil",
+"Snurgrurg",
+"Diamdioc",
+"Oudrarrouz",
+"Haulmi",
+"Holdiz",
+"Hinnyual",
+"Traolbubrorg",
+"Khishohi",
+"Maennius",
+"Jolmuulmohr",
+"Drustiel",
+"Nanruddiarth",
+"Zussial",
+"Laszo",
+"Nathentoih",
+"Phorughoelle",
+"Skilzeda",
+"Vrakniarth",
+"Jerpuldo"
+};
+
+bool find_userid(string name){
+    if(userids.find(name) != userids.end()) return userids[name];
+    else return -1;
 }
 
-//Returns the password for a particular person
 string get_password(string name){
-    return passwords[name];
+    int user_id = -1;
+    if((user_id = find_userid(name)) < 0) return "";
+    else return passwords[user_id];
 }
-
 #endif
